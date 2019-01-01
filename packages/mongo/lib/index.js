@@ -78,12 +78,12 @@ exports.register = function (server, config = {}) {
 
     // Setup logger
     if (logger !== false) {
-      setupLogger(db, logger)
+      setupLogger(_Mongoose.connection, logger)
     }
 
     // Setup forceReconnect
     if (forceReconnect) {
-      setupForceReconnect(db, uri, options,
+      setupForceReconnect(_Mongoose.connection, uri, options,
         forceReconnect === true ? 1000 : forceReconnect)
     }
   }))
